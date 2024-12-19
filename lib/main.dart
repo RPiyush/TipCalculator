@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tip_calculator/widgets/input_bill_text_field.dart';
 import 'package:tip_calculator/widgets/person_counter.dart';
 import 'package:tip_calculator/widgets/split_persons.dart';
+import 'package:tip_calculator/widgets/tip_section.dart';
 
 void main() {
   runApp(const MyApp());
@@ -48,6 +49,7 @@ class TipC extends StatefulWidget {
 
 class _TipCState extends State<TipC> {
   int _numberOfPerson = 1;
+  double _tipPercent = 0;
 
   void increment() {
     setState(() {
@@ -100,28 +102,17 @@ class _TipCState extends State<TipC> {
                     onIncrement: increment,
                   ),
                   // === TIP Section ==
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Tip",
-                          style: theme.textTheme.titleMedium,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Text(
-                            "\$20",
-                            style: theme.textTheme.titleMedium,
-                          ),
-                        ),
-                      ],
-                    ),
-                  )
+                  TipSection(theme: theme),
+                  Text("${(_tipPercent * 100).round()}%"),
+                  Slider(
+                      value: _tipPercent,
+                      onChanged: (value) => {
+                            setState(() {
+                              _tipPercent = value;
+                            })
+                          }),
                 ],
               ),
-              // Split Money Widget
             ),
           )
         ],
