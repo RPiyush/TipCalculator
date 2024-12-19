@@ -16,4 +16,4 @@ This is Flutter learning app. Tipically Tip calculator app which evaluates Tip. 
 
 ## Output 
 
-<img src="[https://github.com/favicon.ico](https://github.com/user-attachments/assets/1f4b981c-3b00-4630-a2dd-0b66f87aed35)" width="48">
+<img src="[https://github.com/favicon.ico](https://github.com/user-attachments/assets/1f4b981c-3b00-4630-a2dd-0b66f87aed35)" width=50% height=50%>
