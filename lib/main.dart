@@ -51,11 +51,15 @@ class TipC extends StatefulWidget {
 class _TipCState extends State<TipC> {
   int _numberOfPerson = 1;
   double _tipPercent = 0;
+  double _billAmount = 0.0;
+  double _totalBillPerperson = 0.0;
+  double _tipAmount = 0;
 
   void increment() {
     setState(() {
       _numberOfPerson++;
     });
+    calculateTip();
   }
 
   void decrement() {
@@ -64,6 +68,17 @@ class _TipCState extends State<TipC> {
         _numberOfPerson--;
       });
     }
+    calculateTip();
+  }
+
+  void calculateTip() {
+    _tipAmount = 0;
+    if (_tipPercent > 0) {
+      _tipAmount = _billAmount * (_tipPercent);
+    }
+    setState(() {
+      _totalBillPerperson = (_billAmount + _tipAmount) / _numberOfPerson;
+    });
   }
 
   @override
@@ -82,11 +97,16 @@ class _TipCState extends State<TipC> {
         // mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          PersonCounter(theme: theme, style: style),
+          PersonCounter(
+            theme: theme,
+            style: style,
+            billAmount: _totalBillPerperson,
+          ),
           // Form
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
+              padding: EdgeInsets.all(20.0),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
                 border:
@@ -95,7 +115,13 @@ class _TipCState extends State<TipC> {
               // Input Text
               child: Column(
                 children: [
-                  InputBillTextField(),
+                  InputBillTextField(
+                    onValueChange: (value) {
+                      _billAmount = double.parse(value);
+                      calculateTip();
+                    },
+                    billAmount: _billAmount.toString(),
+                  ),
                   SplitPersons(
                     theme: theme,
                     numberOfPerson: _numberOfPerson,
@@ -103,13 +129,14 @@ class _TipCState extends State<TipC> {
                     onIncrement: increment,
                   ),
                   // === TIP Section ==
-                  TipSection(theme: theme),
+                  TipSection(theme: theme, tipValue: _tipAmount),
                   Text("${(_tipPercent * 100).round()}%"),
                   TipSlider(
                     tipPercent: _tipPercent,
                     onValueChanged: (double value) {
                       setState(() {
                         _tipPercent = value;
+                        calculateTip();
                       });
                     },
                   ),

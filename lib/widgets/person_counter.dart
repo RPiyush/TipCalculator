@@ -5,10 +5,12 @@ class PersonCounter extends StatelessWidget {
     super.key,
     required this.theme,
     required this.style,
+    required this.billAmount,
   });
 
   final ThemeData theme;
   final TextStyle? style;
+  final double billAmount;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,7 @@ class PersonCounter extends StatelessWidget {
           children: [
             Text("Total Per Person", style: style),
             Text(
-              "\$21.00",
+              "\$${billAmount.toStringAsFixed(2)}",
               style: style?.copyWith(
                   color: theme.colorScheme.onPrimary,
                   fontSize: theme.textTheme.displaySmall?.fontSize),
