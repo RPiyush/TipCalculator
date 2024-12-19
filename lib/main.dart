@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:tip_calculator/widgets/input_bill_text_field.dart';
+import 'package:tip_calculator/widgets/person_counter.dart';
+import 'package:tip_calculator/widgets/split_persons.dart';
 
 void main() {
   runApp(const MyApp());
@@ -76,26 +79,7 @@ class _TipCState extends State<TipC> {
         // mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8),
-            child: Container(
-              padding: EdgeInsets.all(18),
-              decoration: BoxDecoration(
-                  color: theme.colorScheme.inversePrimary,
-                  borderRadius: BorderRadius.circular(10)),
-              child: Column(
-                children: [
-                  Text("Total Per Person", style: style),
-                  Text(
-                    "\$20.00",
-                    style: style?.copyWith(
-                        color: theme.colorScheme.onPrimary,
-                        fontSize: theme.textTheme.displaySmall?.fontSize),
-                  ),
-                ],
-              ),
-            ),
-          ),
+          PersonCounter(theme: theme, style: style),
           // Form
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -108,44 +92,12 @@ class _TipCState extends State<TipC> {
               // Input Text
               child: Column(
                 children: [
-                  TextField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: "Bill Amount",
-                      prefixIcon: Icon(Icons.attach_money),
-                    ),
-                    keyboardType: TextInputType.number,
-                    onChanged: (String value) {
-                      print(value);
-                    },
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Split",
-                          style: theme.textTheme.titleMedium,
-                        ),
-                        Row(
-                          children: [
-                            IconButton(
-                                color: theme.colorScheme.primary,
-                                onPressed: decrement,
-                                icon: const Icon(Icons.remove)),
-                            Text(
-                              "$_numberOfPerson",
-                              style: theme.textTheme.titleMedium,
-                            ),
-                            IconButton(
-                                color: theme.colorScheme.primary,
-                                onPressed: increment,
-                                icon: const Icon(Icons.add))
-                          ],
-                        )
-                      ],
-                    ),
+                  InputBillTextField(),
+                  SplitPersons(
+                    theme: theme,
+                    numberOfPerson: _numberOfPerson,
+                    onDecrement: decrement,
+                    onIncrement: increment,
                   ),
                   // === TIP Section ==
                   Padding(
