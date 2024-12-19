@@ -10,9 +10,14 @@ This is Flutter learning app. Tipically Tip calculator app which evaluates Tip. 
 
 - Widgets. Creating new Stateful Widget class. 
 - Container. Container properties like Padding, EdgeInset Padding, decoration, etc.
-- Column. Column properties like mainAxisAlignment, crossAxisAlignment, etc.
+- Column and Row. Column properties like mainAxisAlignment, crossAxisAlignment, etc.
 - ThemeData. Theme Context, Theme Text Styling and its properties. 
 - Attributs and Constructors.
+- TextFields and its properties.
+- Icons
+- Slider Widget
+- Exracting Widget.
+- Strings Properties like toString(), parse(), toStringAsFixed(), etc. 
 
 ## Output 
 
