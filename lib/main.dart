@@ -3,6 +3,7 @@ import 'package:tip_calculator/widgets/input_bill_text_field.dart';
 import 'package:tip_calculator/widgets/person_counter.dart';
 import 'package:tip_calculator/widgets/split_persons.dart';
 import 'package:tip_calculator/widgets/tip_section.dart';
+import 'package:tip_calculator/widgets/tip_slider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -104,13 +105,14 @@ class _TipCState extends State<TipC> {
                   // === TIP Section ==
                   TipSection(theme: theme),
                   Text("${(_tipPercent * 100).round()}%"),
-                  Slider(
-                      value: _tipPercent,
-                      onChanged: (value) => {
-                            setState(() {
-                              _tipPercent = value;
-                            })
-                          }),
+                  TipSlider(
+                    tipPercent: _tipPercent,
+                    onValueChanged: (double value) {
+                      setState(() {
+                        _tipPercent = value;
+                      });
+                    },
+                  ),
                 ],
               ),
             ),
