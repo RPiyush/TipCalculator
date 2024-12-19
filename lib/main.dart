@@ -79,6 +79,62 @@ class _TipCState extends State<TipC> {
                 ],
               ),
             ),
+          ),
+          // Form
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5),
+                border:
+                    Border.all(color: theme.colorScheme.primary, width: 2.0),
+              ),
+              // Input Text
+              child: Column(
+                children: [
+                  TextField(
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: "Bill Amount",
+                      prefixIcon: Icon(Icons.attach_money),
+                    ),
+                    keyboardType: TextInputType.number,
+                    onChanged: (String value) {
+                      print(value);
+                    },
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Split",
+                          style: theme.textTheme.titleMedium,
+                        ),
+                        Row(
+                          children: [
+                            IconButton(
+                                color: theme.colorScheme.primary,
+                                onPressed: () => (),
+                                icon: const Icon(Icons.remove)),
+                            Text(
+                              "1",
+                              style: theme.textTheme.titleMedium,
+                            ),
+                            IconButton(
+                                color: theme.colorScheme.primary,
+                                onPressed: () => (),
+                                icon: const Icon(Icons.add))
+                          ],
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
+              // Split Money Widget
+            ),
           )
         ],
       ),
