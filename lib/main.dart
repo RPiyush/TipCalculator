@@ -44,6 +44,22 @@ class TipC extends StatefulWidget {
 }
 
 class _TipCState extends State<TipC> {
+  int _numberOfPerson = 1;
+
+  void increment() {
+    setState(() {
+      _numberOfPerson++;
+    });
+  }
+
+  void decrement() {
+    if (_numberOfPerson > 1) {
+      setState(() {
+        _numberOfPerson--;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     // ThemeData Object
@@ -116,15 +132,15 @@ class _TipCState extends State<TipC> {
                           children: [
                             IconButton(
                                 color: theme.colorScheme.primary,
-                                onPressed: () => (),
+                                onPressed: decrement,
                                 icon: const Icon(Icons.remove)),
                             Text(
-                              "1",
+                              "$_numberOfPerson",
                               style: theme.textTheme.titleMedium,
                             ),
                             IconButton(
                                 color: theme.colorScheme.primary,
-                                onPressed: () => (),
+                                onPressed: increment,
                                 icon: const Icon(Icons.add))
                           ],
                         )
