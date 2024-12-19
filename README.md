@@ -12,4 +12,8 @@ This is Flutter learning app. Tipically Tip calculator app which evaluates Tip. 
 - Container. Container properties like Padding, EdgeInset Padding, decoration, etc.
 - Column. Column properties like mainAxisAlignment, crossAxisAlignment, etc.
 - ThemeData. Theme Context, Theme Text Styling and its properties. 
-- Attributs and Constructors. 
+- Attributs and Constructors.
+
+## Output 
+
+![TipCalculator_Recording](https://github.com/user-attachments/assets/1f4b981c-3b00-4630-a2dd-0b66f87aed35)
